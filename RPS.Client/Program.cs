@@ -10,8 +10,8 @@ namespace RPS.Client
     {
         static void Main(string[] args)
         {
-            Game g = new Game();
-            g.Start();
+            MainMenu m = new MainMenu();
+            m.ShowMenu();
         }
     }
 }
