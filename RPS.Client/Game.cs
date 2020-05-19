@@ -9,7 +9,7 @@ namespace RPS.Client
 	public class Game
 	{
 		private string OpponentChoice, DefenderChoice;
-		private int OpponentScore, DefenderScore = 0;
+		private int OpponentScore = 0, DefenderScore = 0;
 		private int RoundAmount = 0;
 		private bool IsAI = true;
 
@@ -86,7 +86,7 @@ namespace RPS.Client
 
 			Console.WriteLine("Do you want to play online?");
 
-			if (GetInput() == "yes") IsAI = false;
+            if (GetInput() == "yes") IsAI = false;
 		}
 
 		/// <summary>
@@ -107,25 +107,14 @@ namespace RPS.Client
 		private string GetChoice(string input)
 		{
 			string choice;
-			// Check input and find out choice
+            // Check input and find out choice
 
-			if (input == "rock")
-			{
-				choice = "rock";
-			}
-			else if (input == "paper")
-			{
-				choice = "paper";
-			}
-			else if (input == "scissors")
-			{
-				choice = "scissors";
-			}
-			else
-			{
-				// re run
-				choice = "nothing";
-			}
+            choice = input;
+
+            if (input != "rock" || input != "paper" || input != "scissors")
+            {
+                choice = "nothing";
+            }
 
 			return choice;
 		}

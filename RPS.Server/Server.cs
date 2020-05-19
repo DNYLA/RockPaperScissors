@@ -63,7 +63,7 @@ namespace RPS.Server
         {
             while (client.connected)
             {
-
+                client.SendMessage("Hello");
             }
             Console.WriteLine("Listening For Messages");
 
