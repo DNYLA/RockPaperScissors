@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiplayerGame.cs" />
+    <Compile Include="Server\Connect.cs" />
+    <Compile Include="Server\Messenger.cs" />
     <Compile Include="SoloGame.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Player.cs" />
@@ -51,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RPS.Messenger\RPS.Messenger.csproj">
+      <Project>{88fe9dc4-1731-4ec2-a4a5-9ce6051685c8}</Project>
+      <Name>RPS.Messenger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

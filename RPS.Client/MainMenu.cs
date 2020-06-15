@@ -8,11 +8,17 @@ namespace RPS.Client
 {
     class MainMenu
     {
+        private Player player;
+        public MainMenu(Player ply)
+        {
+            player = ply;
+            ShowMenu();
+        }
+
         public void ShowMenu()
         {
             Console.WriteLine("How many rounds do you want to play?");
             int RoundAmount = 3;
-            Player player = new Player();
 
             try
             {
@@ -27,12 +33,12 @@ namespace RPS.Client
 
             if (player.GetInput() == "y")
             {
-                Console.WriteLine("Not Implemented Yet Sorry");
-                ShowMenu();
+                MultiplayerGame mpGame = new MultiplayerGame(player);
+                mpGame.ConnectLobby();
             }
             else
             {
-                SoloGame g = new SoloGame();
+                SoloGame g = new SoloGame(player);
                 g.Start(RoundAmount);
             }
 

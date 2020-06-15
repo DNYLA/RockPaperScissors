@@ -1,6 +1,8 @@
-﻿using System;
+﻿using RPS.Client.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,18 +60,34 @@ namespace RPS.Client
             return options[choice];
         }
 
+        public string ReceiveString()
+        {
+            return RPS.Messenger.Receive.ReceiveString(clientSock);
+        }
+
+
         public void DisplayScore()
         {
             Console.WriteLine($"You Won {score} times");
         }
 
-        public string GetInput()
+        public string GetInput(bool caseInsensitive = false)
         {
+            if (caseInsensitive) { return Console.ReadLine(); }
             return Console.ReadLine().ToLower();
+        }
+
+        public void UpdateMessenger()
+        {
+            Messenger = new Server.Messenger(clientSock);
         }
 
         private bool IsAI = false;
         public int score = 0;
+        public string LobbyID = "";
+        public Socket clientSock;
+
+        public Server.Messenger Messenger;
 
 
     }

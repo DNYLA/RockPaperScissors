@@ -10,8 +10,17 @@ namespace RPS.Client
     {
         static void Main(string[] args)
         {
-            MainMenu m = new MainMenu();
-            m.ShowMenu();
+            Player ply = new Player();
+
+            Server.Connect sConnect = new Server.Connect();
+            if (!sConnect.InitializeConnection(out ply.clientSock))
+            {
+                Console.WriteLine("Could Not Connect To Server...");
+                //return;
+            }
+
+            ply.UpdateMessenger();
+            MainMenu m = new MainMenu(ply);
         }
     }
 }

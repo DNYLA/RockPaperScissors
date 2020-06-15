@@ -11,13 +11,17 @@ namespace RPS.Messenger
     {
         private static byte[] ReceiveData(Socket sock)
         {
+            DateTime curTime = DateTime.Now;
+            DateTime waitTime = curTime.AddSeconds(30);
             byte[] data = new byte[1024];
+
             int size = sock.Receive(data);
             byte[] buff = new byte[size];
 
             Array.Copy(data, buff, size);
 
             return buff;
+            //return data;
         }
 
         public static string ReceiveString(Socket sock)
