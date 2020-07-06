@@ -10,27 +10,20 @@ namespace RPS.Client
 {
     public class Player
     {
+        private bool IsAI = false;
+        public int score = 0;
+        public string LobbyID = "";
+        public Socket clientSock;
+        private string choice;
+
+        public Server.Messenger Messenger;
 
         public string GetChoice()
         {
-            if (IsAI)
-                return AiInput();
-
-            Console.WriteLine("Chose Rock, Paper or Scissors");
-            var input = Console.ReadLine();
-
-            string choice = ValidateChoice(input);
-
-            if (choice == "nothing")
-            {
-                Console.WriteLine("Invalid Option");
-                return GetInput();
-            }
-
-
             return choice;
         }
 
+        [Obsolete("No Need as Everything is Handled using UI")]
         private string ValidateChoice(string input)
         {
                 input = input.ToLower();
@@ -44,7 +37,7 @@ namespace RPS.Client
         }
 
 
-        public string AiInput()
+        public string SetAiChoice()
         {
             Random rnd = new Random();
 
@@ -55,9 +48,14 @@ namespace RPS.Client
                 "scissors"
             };
 
-            int choice = rnd.Next(0, options.Count());
+            int numChoice = rnd.Next(0, options.Count());
+            choice = options[numChoice];
+            return "dff";
+        }
 
-            return options[choice];
+        public void SetChoice(string selectedChoice)
+        { 
+            choice = selectedChoice;
         }
 
         public string ReceiveString()
@@ -82,12 +80,6 @@ namespace RPS.Client
             Messenger = new Server.Messenger(clientSock);
         }
 
-        private bool IsAI = false;
-        public int score = 0;
-        public string LobbyID = "";
-        public Socket clientSock;
-
-        public Server.Messenger Messenger;
 
 
     }

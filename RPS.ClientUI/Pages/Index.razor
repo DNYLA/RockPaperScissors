@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<h1>Welcome to Dans Rock, Paper, Scissors Game</h1>
+<br />
+<button @onclick="ConnectServer">Play</button>
+
+
+
+@code {
+    private int currentCount = 0;
+    private System.Net.Sockets.Socket sock;
+    Client.Server.Connect con = new Client.Server.Connect();
+
+    private void ConnectServer()
+    {
+
+        con.InitializeConnection(out sock);
+        @inject NavigationManager Navigation
+        Navigation.NavigateTo("/counter", true);
+    }
+}

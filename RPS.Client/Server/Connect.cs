@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 
 namespace RPS.Client.Server
 {
+    [Obsolete("This needs to be Moved")]
     public class Connect
     {
         private string IP_ADDRESS = "127.0.0.1";
         private int PORT = 4030;
-        public  bool connected;
+        public  bool connected = false;
         protected internal static Socket sSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         public bool InitializeConnection(out Socket sock)
         {
-            sock = sSock;
+        sock = sSock;
 
             if (!connected)
             {
@@ -48,6 +49,8 @@ namespace RPS.Client.Server
                 return false;
 
             }
+
+            if (connected) { Console.WriteLine("Already Connected"); }
 
             return true;
         }

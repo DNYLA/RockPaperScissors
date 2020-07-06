@@ -34,12 +34,6 @@ namespace RPS.Client
 
             string ready = self.ReceiveString();
             PlayGame();
-            Thread x; //Client1
-            Thread y; //Client2
-
-
-
-            Thread z; //Client1 & client2;
         }
 
         private void PlayGame()

@@ -38,8 +38,8 @@ namespace RPS.Client
             }
             else
             {
-                SoloGame g = new SoloGame(player);
-                g.Start(RoundAmount);
+                //SoloGame g = new SoloGame(player);
+                //g.Start(RoundAmount);
             }
 
         }

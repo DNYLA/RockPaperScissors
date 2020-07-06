@@ -9,25 +9,24 @@ namespace RPS.Client
 {
 	public class SoloGame
 	{
-		private Player self = new Player();
-		public SoloGame(Player ply)
+		public SoloGame()
 		{
-			self = ply;
+
 		}
+
+		
 
 		public void Start(int roundAmmount)
 		{
 			Player computer = new Player();
 
+			computer.SetAiChoice();
+
 			for (var i = 0; roundAmmount > i; i++)
 			{
-				int winValue = CalculateWinner(self.GetChoice(), computer.GetChoice());
-				UpdateScore(self, computer, winValue);
+				//int winValue = CalculateWinner(self.GetChoice(), computer.GetChoice());
+				//UpdateScore(self, computer, winValue);
 			}
-			
-			Console.WriteLine("\nFinal Score");
-			Console.WriteLine("Player: "); self.DisplayScore();
-			Console.WriteLine("Computer: "); computer.DisplayScore();
 
 			return;
 		}
@@ -50,7 +49,7 @@ namespace RPS.Client
 			}
 		}
 
-		private int CalculateWinner(string c1, string c2)
+		public int CalculateWinner(string c1, string c2)
 		{
 			Console.WriteLine($"Computer Chose {c2}");
 			if (c1 == "rock" && c2 == "paper" || c1 == "paper" && c2 == "rock" || c1 == "scissors" && c2 == "rock")

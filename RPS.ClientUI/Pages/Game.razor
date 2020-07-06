@@ -1,0 +1,43 @@
+﻿<h3>Game</h3>
+
+<button @onclick="@(() => @UpdateChoiceRock("dan"))">Rock</button>
+<button>Paper</button>
+<button>Scissors</button>
+
+@code {
+    private string[] choices = new string[] { "Rock", "Paper", "Scissors" };
+    private Client.Player self = new Client.Player();
+    private Client.SoloGame soloGame;
+
+
+    private void InitializeGame()
+    {
+        soloGame = new Client.SoloGame();
+    }
+
+    private void UpdateChoiceRock(string choice)
+    {
+        
+    }
+
+
+
+    public void Start(int roundAmmount)
+    {
+        Client.Player computer = new Client.Player();
+
+
+
+        for (var i = 0; roundAmmount > i; i++)
+        {
+            int winValue = soloGame.CalculateWinner(self.GetChoice(), computer.GetChoice());
+            //UpdateScore(self, computer, winValue);
+        }
+
+        Console.WriteLine("\nFinal Score");
+        Console.WriteLine("Player: "); self.DisplayScore();
+        Console.WriteLine("Computer: "); computer.DisplayScore();
+
+        return;
+    }
+}

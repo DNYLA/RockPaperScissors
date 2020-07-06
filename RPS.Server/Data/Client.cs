@@ -9,7 +9,6 @@ namespace RPS.Server.Data
 
     class Client
     {
-
         public string Name = string.Empty;
         public int LobbyID = 0;
         public Socket sock = null;
